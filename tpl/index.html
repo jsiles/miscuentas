@@ -9,28 +9,27 @@
 <script src="./js/facebooklib.js"></script>
   </head>
   <body>
-  <div id="fb-root"></div>
-    <div class="boxHeader" ><!-- style="display:none;"-->
-	</div>
+     <div id="fb-root"></div>
+    <div class="boxHeader" ></div>
 	
     
-    <div id="no_logueado" style="display:none"><!-- style="display:none;"-->
+    <div id="no_logueado" style="display:none">
   
-    <div id="Content" >
-        <p>Para poder ver las cuentas de tus servicios. <span class="small">(Bolivia)</span>, debes hacerte fan de la p&aacute;gina e instalar esta aplicaci&oacute;n.</p>
-          <br />
-          <a href="instalar" onClick="login(0);return false;" class="btnInsApp" title="Instalar aplicaci&oacute;n Mis Cuentas">Instalar aplicaci&oacute;n Mis Cuentas</a>
-        </div>
-        </div>
+            <div id="Content" >
+                <p>Para poder ver las cuentas de tus servicios. <span class="small">(Bolivia)</span>, debes hacerte fan de la p&aacute;gina e instalar esta aplicaci&oacute;n.</p>
+                  <br />
+                  <a href="instalar" onClick="login(0);return false;" class="btnInsApp" title="Instalar aplicaci&oacute;n Mis Cuentas">Instalar aplicaci&oacute;n Mis Cuentas</a>
+            </div>
+     </div>
         <div id="login" style ="display:none"></div>
-        <div class="boxFooter" ><!-- style="display:none;"-->
+        <div class="boxFooter" >
           <a href="http://www.sintesis.com.bo" target="_blank" class="logos" title="Desarrollado por Sintesis">Desarrollado por Sintesis</a> 
-  	</div>
+  		</div>
   
 
     <div class="clear"></div>
     <br />
-     <div id="logueado" style="display:none"> <!-- style="display:none;"-->
+     <div id="logueado" style="display:none;"> 
       <div id="formContent">
   <form class="formA" name="frmContent" action="../pin.php" method="post">
     <fieldset>
@@ -61,19 +60,20 @@
 			<a href="../send" class="btnSend" onClick="return false;">ENVIAR</a>
             <span id="loading" class="loadI" style="display:none;">
             
-            </div>
+          
             
             </p>
-            <p align="left"><a href="#" onclick="logout()"> desinstalar <a/></p>
+            <p align="left"><a href="#" onclick="logout()"> desinstalar </a></p>
             <p align="left"><input type="submit" name="mandar" value="MANDAR"></p>
     </fieldset>
+    
   </form>
-  <div class="clear"></div>
-    <br /><br /><br /><br /><br /><br />
   
+  <div class="clear"></div>
+  
+    <br /><br /><br /><br /><br /><br />
+  </div>
   <div id="boxTxt" class="boxTxt" style="display:none;"><!-- style="display:none;"-->Tu mensaje ha sido enviado satisfactoriamente</div>
     <div id="boxTxtEr" class="boxTxtEr" style="display:none;"><!-- style="display:none;"-->Lo sentimos, el mensaje no pudo ser enviado</div>
-  
-  </div>     
  </body> 
 </html>
