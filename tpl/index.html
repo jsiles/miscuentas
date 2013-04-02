@@ -1,70 +1,98 @@
-<!doctype html>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <title>Mis Cuentas</title>
-    <link href="./css/style.css" rel="stylesheet" type="text/css" />
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.5.js"></script>
     <script src="http://connect.facebook.net/es_LA/all.js"></script>
-<script src="./js/facebooklib.js"></script>
+    
+<script src="js/facebooklib.js"></script>
+<!--<script src="../js/facebooklib.js"></script>-->
   </head>
-  <body>
+
+  <body style="overflow: hidden">
+  
+  <script type="text/javascript">  
+   window.fbAsyncInit = function() {
+    FB.init({
+     appId: '117132315001779', 
+     status: true, 
+     cookie: true, 
+     xfbml: true
+    });
+    
+    //this resizes the the i-frame 
+    //on an interval of 100ms 
+    FB.Canvas.setAutoResize(100);
+ 
+   };
+   (function() {
+    var e = document.createElement('script');
+    e.async = true;
+    e.src = document.location.protocol + 
+     '//connect.facebook.net/en_LA/all.js';
+    document.getElementById('fb-root').appendChild(e);   
+   }());
+  
+  </script> 
+  
+  <div class="logueado">
      <div id="fb-root"></div>
     <div class="boxHeader" ></div>
 	
     
-    <div id="no_logueado" style="display:none">
+    <div id="no_logueado" class="logueado" style="display:none;">
   
-            <div id="Content" >
+            <div id="Content" class="logueado">
                 <p>Para poder ver las cuentas de tus servicios. <span class="small">(Bolivia)</span>, debes hacerte fan de la p&aacute;gina e instalar esta aplicaci&oacute;n.</p>
                   <br />
                   <a href="instalar" onClick="login(0);return false;" class="btnInsApp" title="Instalar aplicaci&oacute;n Mis Cuentas">Instalar aplicaci&oacute;n Mis Cuentas</a>
             </div>
      </div>
         <div id="login" style ="display:none"></div>
-        <div class="boxFooter" >
-          <a href="http://www.sintesis.com.bo" target="_blank" class="logos" title="Desarrollado por Sintesis">Desarrollado por Sintesis</a> 
-  		</div>
+        
   
 
-    <div class="clear"></div>
-    <br />
-     <div id="logueado" style="display:none;"> 
+    
+     <div id="logueado" class="logueado" style="display:none;"> 
       <div id="formContent">
-  <form class="formA" name="frmContent" action="../pin.php" method="post">
+  <form class="formA" name="frmContent" action="pin.php" method="POST" >
     <fieldset>
 		<p>
         	<input type="hidden" name="userid" id="userid"  />
 			<label class="lA">Tu nombre:</label>
-			<input type="text" maxlength="30" class="inputB1" name="name" id="name" value=""/>
+			<input type="text" maxlength="30" class="inputC1" name="name" id="name" value=""/>
 	
 		</p>
         <p>
             <label class="lA">Tu apellido:</label>
-			<input type="text2" maxlength="30" class="inputB1" name="paterno" id="paterno" value=""/>
+			<input type="text2" maxlength="30" class="inputC1" name="paterno" id="paterno" value=""/>
         </p>
         <p>
             <label class="lA">Carnet de Identidad:</label>
-			<input type="text2" maxlength="10" class="inputC1" name="ci" id="ci" />
+			<input type="text2" maxlength="10" class="inputC1" name="ci" id="ci" onblur="cambia_clase(ci)" />
         </p>
         <p>
             <label class="lA">Nro. de celular:</label>
-			<input type="text2" maxlength="10" class="inputC1" name="phone" id="phone" value=""/>
+			<input type="text2" maxlength="10" class="inputC1" name="phone" id="phone" value="" onblur="cambia_clase(phone)"/>
         </p>
 		<p>
 			<label class="lA">Email:</label>
-			<input type="text2" maxlength="30" class="inputB1" name="correo" id="correo" value=""/>
+			<input type="text2" maxlength="30" class="inputC1" name="correo" id="correo" value="" onblur="cambia_clase(correo)"/>
 		</p>
 		<p>
 			<label class="lA">&nbsp;</label>
-			<a href="../send" class="btnSend" onClick="return false;">ENVIAR</a>
+			<input type="submit" name="enviar" id="enviar" value="ENVIAR" disabled="disabled" />
             <span id="loading" class="loadI" style="display:none;">
             
           
             
             </p>
-            <p align="left"><a href="#" onclick="logout()"> desinstalar </a></p>
-            <p align="left"><input type="submit" name="mandar" value="MANDAR"></p>
+     <p ><a href="#" onClick="logout()"> desinstalar </a></p>
+            <!--<p ><input type="submit" name="mandar" value="MANDAR"></p>-->
     </fieldset>
     
   </form>
@@ -72,8 +100,16 @@
   <div class="clear"></div>
   
     <br /><br /><br /><br /><br /><br />
-  </div>
+  
   <div id="boxTxt" class="boxTxt" style="display:none;"><!-- style="display:none;"-->Tu mensaje ha sido enviado satisfactoriamente</div>
     <div id="boxTxtEr" class="boxTxtEr" style="display:none;"><!-- style="display:none;"-->Lo sentimos, el mensaje no pudo ser enviado</div>
+   </div> 
+    </div>
+    
+    <div class="boxFooter" >
+          <a href="http://www.sintesis.com.bo" target="_blank" class="logos" title="Desarrollado por Sintesis">Desarrollado por Sintesis</a> 
+  		</div>
+        
+        </div>
  </body> 
 </html>

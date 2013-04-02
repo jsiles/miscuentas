@@ -2,9 +2,9 @@
 error_reporting (E_ALL ^ E_NOTICE);
 
 include("db_mysql.inc");
-define("DATABASE_NAME","manufactura2"); //simulado_manufactura2
-define("DATABASE_USER","root"); //simulado_gen
-define("DATABASE_PASSWORD",""); //generico123
+define("DATABASE_NAME","BDMiscuentas"); //simulado_manufactura2
+define("DATABASE_USER","usermiscuentas"); //simulado_gen
+define("DATABASE_PASSWORD","m1scu3nt45"); //generico123
 define("DATABASE_HOST","localhost");
 @session_start();
 // Database Initialize

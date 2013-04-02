@@ -6,12 +6,13 @@ FB.init
     cookie     : true, // set sessions cookies to allow your server to access the session?
     xfbml      : true  // parse XFBML tags on this page?
     });
- 
+ inicia_session();
 FB.getLoginStatus(function(response) {
  	if (response.status === 'connected') 
 	{
 		//alert ("usuario conectado"); 
 		mostrardiv("logueado");
+		//cerrar("no_logueado")
 		login(1);//location.reload(true);
 		  	
 	} 
@@ -19,6 +20,7 @@ FB.getLoginStatus(function(response) {
    	
 		//alert ("usuario no conectado");
 		mostrardiv("no_logueado");
+		//cerrar("logueado")
 		
   	}
     });
@@ -65,11 +67,10 @@ FB.getLoginStatus(function(response) {
 					}
 
 					document.getElementById("userid").value=response.id;
+					var idf=response.id;
+					verificar_idface(idf);		
 					//mostrardiv("logueado");
-					
-						
-							
-	    				}
+				}
 				);
 						
 				//TIENES PERMISOS
@@ -86,6 +87,147 @@ FB.getLoginStatus(function(response) {
 		);
 		
   }
+  
+  function buscar_cliente(nro_etiquetas)//buscar_cliente(id)
+  {
+	//alert (nro_etiquetas);
+	var string_valores;
+	for (var i=0;i<=nro_etiquetas-1;i++)
+	{
+		var id="txt"+i;
+		valor=document.getElementById(id).value;
+		string_valores=valor+",";
+		//alert (valor);
+	} 
+	$('#loading').show();
+	$.ajax({type: "POST",
+			url: "ProyectoWSv2.1/buscarCliente.php",
+			data:"valores_estiquetas="+string_valores,
+				   success: function(msg)
+				   {
+					   $('#loading').hide();
+					   $('#busca_cliente').html(msg);  						
+				   }
+		});				
+					   		
+  }
+  
+  function buscar_items_de_cuenta(servicio,descrip)
+  {
+	//alert (descrip);
+	//alert (servicio);
+	
+	$('#loading').show();
+	$.ajax({type: "POST",
+			url: "ProyectoWSv2.1/buscarItemsDeCuenta.php",
+			data: "servicio="+servicio+"&descripcion="+descrip,
+				   success: function(msg)
+				   {
+					   $('#loading').hide();
+					   $('#detalle').html(msg);  						
+				   }
+		});		
+  }
+  //
+  function inicia_session()
+  {
+	//alert ("inicia session");
+	$('#loading').show();
+	$.ajax({url: "ProyectoWSv2.1/iniciaSession.php",
+		   success: function(msg)
+		   {
+			   $('#loading').hide();
+			   
+		   }
+		  });
+		  //location.reload(true);										
+	setTimeout("inicia_session();",200000);	   		
+  }
+   ///
+   ID=window.setTimeout("Actualizar();",1000000);
+function Actualizar() {
+   contador ++;
+   window.status="El contador esta ahora en " + contador + " segundos";
+   document.msg.txt.value="El contador esta ahora en " + contador + " segundos";
+// poné otro timeout para el siguiente contador
+   ID=window.setTimeout("Actualizar();",1000);
+}
+   
+  function servicios()
+  {
+	//alert ("servicios");
+  	var lista = document.getElementById("modulos");
+  	var codmod=lista.options[lista.selectedIndex].value;
+	//alert (codmod);
+	$('#loading').show();
+	$.ajax({
+		   type: "POST",
+		   url: "ProyectoWSv2.1/obtenerCriteriosParaModulo.php",
+		   data: "cod_modulo="+codmod,
+		   success: function(msg)
+		   {
+			   $('#loading').hide();
+		   	   $('#apDiv1').html(msg);
+	  						
+		  }
+		  });
+  } 
+  
+  function etiquetas()
+  {
+	//alert ("etiquetas");
+  	var lista = document.getElementById("criterios");
+  	var codetiqueta=lista.options[lista.selectedIndex].value;
+	
+	$('#loading').show();
+			$.ajax({
+				   type: "POST",
+				   url: "ProyectoWSv2.1/etiquetas_de_busqueda.php",
+				   data: "cod_etiqueta="+codetiqueta,
+				   success: function(msg)
+				   {
+					   $('#loading').hide();
+					   $('#apDiv2').html(msg);
+					   						
+					}
+			 	});
+  }  
+   ///
+  function verificar_idface(id)
+  {
+	$('#loading').show();
+			$.ajax({
+				   type: "POST",
+				   url: "./verif.php",
+				   data: "id_facebook="+id,
+				   success: function(msg)
+				   {
+					   $('#loading').hide();
+					   //alert(msg);
+					   if(msg=='OK')
+					   {
+						   	inicia_session();
+					   		document.getElementById("logueado").style.display="none";
+							location.href="./tpl/lista_servicios.php";
+					    	$('#boxTxt').fadeIn('slow');
+						
+					   }
+					  
+					  /* if(msg=='NO_S')
+					   {
+							document.getElementById("logueado").style.display=	"none";
+							location.href="./pin.php";
+					    	$('#boxTxt').fadeIn('slow');
+						}
+					 						
+						if(msg=='NO')
+						{
+							mostrardiv("logueado");
+						}*/
+						
+					}
+			 	});inicia_session();
+  }
       
   function logout()
   {
@@ -96,8 +238,7 @@ FB.getLoginStatus(function(response) {
 		location.reload(true);
 		});
 		FB.api({ method: 'Auth.revokeAuthorization' }, 
-		function(response) {clearDisplay		
-		()});//return false;
+		function(response) {clearDisplay()});//return false;
 		//window.location.reload(true);
   }
 
@@ -191,7 +332,7 @@ FB.getLoginStatus(function(response) {
 	 function estado()
 	 { 
 	  	FB.getLoginStatus(function(response) {
-	 	if (response.status === 'connected') 
+	 	if (response.status == 'connected') 
 		{
 	   
     	
@@ -202,7 +343,55 @@ FB.getLoginStatus(function(response) {
 	 
 	 }
    	 
+function cambia_clase(id)
+{
+	var cont=0;
+	if(!id.value)
+	{
+		id.className="reqB";
+	}
+	else
+	{
+		id.className="inputC1";
+	}
+	
+	
+	if(document.getElementById("name").value)
+	{	cont++;}
+	else
+	{	document.frmContent.enviar.disabled=true;
+	}
 
+	if(document.getElementById("paterno").value)
+	{	cont++;}
+	else
+	{	document.frmContent.enviar.disabled=true;
+	}
+	
+	if(document.getElementById("ci").value)
+	{	cont++;}
+	else
+	{	document.frmContent.enviar.disabled=true;
+	}	
+	
+	if(document.getElementById("phone").value)
+	{	cont++;}
+	else
+	{	document.frmContent.enviar.disabled=true;
+	}
+	
+	if(document.getElementById("correo").value)
+	{	cont++;}
+	else
+	{	document.frmContent.enviar.disabled=true;
+	}
+	
+	
+	if(cont==5)
+	{
+		document.frmContent.enviar.disabled=false;
+	}
+}
 function mostrardiv(id) {
 //alert (id);
 div = document.getElementById(id);

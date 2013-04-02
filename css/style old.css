@@ -1,0 +1,443 @@
+/* 
+MisCuentas FACEBOOK - 2013
+Design: Sintesis
+
+	celeste 			#0E76BC
+	paleta: normal:		#0E76BC
+	        dark:		#0A5284
+			verysoft:	#C4E7FF
+			soft: 		#89CFFF
+			
+	naranja 			#FCAF40      //#FCB040
+	paleta: normal:		#FCAF40
+	    	dark:		#B07B2D
+			verysoft: 	#FFECCF
+			soft: 		#FFD8A0
+
+
+	verde   			#39B54A
+	paleta: normal:		#39B54A
+			dark:		#287F34
+			verysoft: 	#D3FFD9
+			soft: 		#A8FFB4
+			
+	plomo				#DCDCDC  (texto)	
+	rojo                #FF8080   //FFBFBF   //#F00 	
+*/
+
+/* cabecera */
+.boxHeader{
+overflow: hidden;
+/*background-color:#FCAF40;*/
+background:url(../lib/header.png);
+width: 520px;
+height: 65px;
+margin: 5px auto;
+}
+
+/* pie */
+.boxFooter{
+overflow: hidden;
+background-color:#FFF;
+width: 520px;
+height: 35px;
+margin: 5px auto;
+}
+
+/* formulario content */
+#formContent{
+overflow: hidden;
+color: #5a5945;
+font-size: 11px;
+font-family: Arial,Helvetica,sans-serif;
+background: #FFF url(../lib/background.jpg) no-repeat top;
+/*background:#0E76BC no-repeat top;*/
+width: 500px;
+/*height: 380px;*/
+margin: auto;
+padding: 93px 10px 10px 10px;
+}
+#formContent p{
+text-align: justify;
+line-height: 12px;
+margin: 0;
+}
+
+
+/* Content */
+#Content{
+overflow: hidden;
+color: #222;
+font-weight: 700;
+font-size: 14px;
+font-family: Arial,Helvetica,sans-serif;
+text-align: center;
+background: #FFF url(../lib/background.jpg) no-repeat top;
+/*background:#0E76BC no-repeat top;*/
+width: 500px;
+height: 210px;
+margin: auto;
+padding: 93px 10px 10px 10px;
+}
+
+#Content p{
+clear: both;
+display: block;
+text-align: center;
+line-height: 18px;
+width: 430px;
+margin: 0 auto 25px auto;
+}
+
+
+/* Información Content */
+#infoContent{
+overflow: hidden;
+color: #5a5945;
+font-size: 11px;
+font-family: Arial,Helvetica,sans-serif;
+width: 520px;
+margin: auto;
+}
+#infoContent p{
+text-align: justify;
+line-height: 12px;
+margin: 5px 0;
+}
+
+/* texto informativo fuera de content */
+.txtInf{
+color: #000;
+font-size: 12px;
+letter-spacing: -0.05em;
+border-top: 1px solid #e5e5e5;
+border-bottom: 1px solid #e5e5e5;
+padding: 15px 0;
+margin: 10px 0;
+}
+
+/* texto informativo en content */
+.boxTxt{
+position: absolute;
+color: #5e2778;
+font-size: 14px;
+line-height: 18px;
+text-align: center;
+border: 1px solid #f0f0b9;
+background-color: #FF9;
+width: 388px;
+margin: -70px 10px 50px 60px;
+padding: 14px 14px 14px 14px;
+}
+
+/* texto informativo de error en content */
+.boxTxtEr{
+position: absolute;
+color: #000;
+font-size: 14px;
+line-height: 18px;
+text-align: center;
+border: 1px solid #ffabab;
+background-color: #FF8080;
+width: 388px;
+margin: -70px 10px 50px 60px;
+padding: 14px 14px 14px 14px;
+}
+
+.btnLike{
+position: absolute;
+text-align: right;
+width: 80px;
+margin: 40px 0 0 435px;
+*margin: 35px 0 0 -65px;
+}
+
+.clear{
+clear: both;
+}
+
+.bold2{
+color: #5e2778;
+font-weight: 700;
+text-align: left;
+}
+
+.small{
+font-size: 9px;
+}
+
+
+
+/* LINKS */
+
+a.logos:link,a.logos:visited {
+display: block;
+float: right;
+outline: none;
+text-decoration: none;
+text-indent: -9000px;
+text-align: left;
+background: url(../lib/logo.png) no-repeat top;
+/*background:#999;*/
+width: 75px;
+height: 30px;
+}
+a.logos:hover {
+background-position: bottom;
+}
+
+a.lnkSmall:link,a.lnkSmall:visited {
+color: #fb070d;
+text-decoration: underline;
+text-align: left;
+}
+a.lnkSmall:hover {
+text-decoration: none;
+}
+
+
+/* LISTADO */
+ul.liOpt{
+float: left;
+margin: 5px 0 !important;
+padding: 0 !important;
+}
+ul.liOpt li {
+display: block;
+float: left;
+text-align: left;
+background: url(../lib/bullet_01.gif) no-repeat left;
+width: 485px;
+margin: 5px 0;
+padding: 0;
+padding-left: 15px;
+}
+
+/* FORM 1 */
+.formA fieldset{
+float: left;
+border: none !important;
+width: 480px;
+margin: 5px 0 !important;
+padding: 0 !important;
+}
+.formA label{
+display: block;
+float: left;
+color: #000;
+font-size:  12px;
+text-align: left;
+line-height: 24px;
+font-weight: 700;
+padding: 0 15px;
+}
+.formA .lA{
+font-weight: 700;
+width: 120px;
+}
+.formA .inputB1{ /* INICIAL NOMBRE */
+display: block;
+float: left;
+color: #4c4c4c;
+font-size:  12px;
+font-family: Arial,Helvetica,sans-serif;
+/*background: #fff url(../lib/inputb.gif) no-repeat center -31px;
+border: none;*/
+width: 200px;
+height: 15px;
+padding: 8px 6px;
+}
+.formA .inputB{ /* EFECTO NOMBRE */
+display: block;
+float: left;
+color: #4c4c4c;
+font-size:  12px;
+font-family: Arial,Helvetica,sans-serif;
+/*background: #fff url(../lib/inputb.gif) no-repeat top;
+border: none;*/
+width: 200px;
+height: 15px;
+padding: 8px 6px;
+}
+.formA .reqB{ /* ERROR NOMBRE */
+display: block;
+float: left;
+color: #4c4c4c;
+font-size:  12px;
+font-family: Arial,Helvetica,sans-serif;
+/*background: #ffcccc url(../lib/inputb.gif) no-repeat bottom;
+border: none;*/
+width: 200px;
+height: 15px;
+padding: 8px 6px;
+}
+
+.formA .inputC1{ /* INICIAL NUM */
+display: block;
+float: left;
+color: #4c4c4c;
+font-size:  12px;
+font-family: Arial,Helvetica,sans-serif;
+/*background: #fff url(../lib/inputc.gif) no-repeat center -31px;
+border: none;*/
+width: 120px;
+height: 15px;
+padding: 8px 6px;
+}
+.formA .inputC{ /* EFECTO NUM */
+display: block;
+float: left;
+color: #4c4c4c;
+font-size:  12px;
+font-family: Arial,Helvetica,sans-serif;
+/*background: #fff url(../lib/inputc.gif) no-repeat top;
+border: none;*/
+width: 120px;
+height: 15px;
+padding: 8px 6px;
+}
+.formA .reqC{ /* ERROR NUM */
+display: block;
+float: left;
+color: #4c4c4c;
+font-size:  12px;
+font-family: Arial,Helvetica,sans-serif;
+/*background: #ffcccc url(../lib/inputc.gif) no-repeat bottom;
+border: none;*/
+width: 120px;
+height: 15px;
+padding: 8px 6px;
+}
+
+.formA .txtar1{ /* INICIAL TEXTAREA */
+display: block;
+float: left;
+overflow: hidden;
+color: #4c4c4c;
+font-size:  12px;
+font-family: Arial,Helvetica,sans-serif;
+/*background: #fff url(../lib/txt_ar.gif) no-repeat center -62px;
+border: none;*/
+width: 368px;
+height: 46px;
+padding: 8px 6px;
+}
+
+.formA .txtar{ /* EFECTO TEXTAREA */
+display: block;
+float: left;
+overflow: hidden;
+color: #4c4c4c;
+font-size:  12px;
+font-family: Arial,Helvetica,sans-serif;
+/*background: #fff url(../lib/txt_ar.gif) no-repeat top;
+border: none;*/
+width: 368px;
+height: 46px;
+padding: 8px 6px;
+}
+
+.formA .txtarReq{ /* ERROR TEXTAREA */
+display: block;
+float: left;
+overflow: hidden;
+color: #4c4c4c;
+font-size:  12px;
+font-family: Arial,Helvetica,sans-serif;
+/*background: #ffcccc url(../lib/txt_ar.gif) no-repeat bottom;
+border: none;*/
+width: 368px;
+height: 46px;
+padding: 8px 6px;
+}
+
+/*
+.formA textarea{
+display: block;
+float: left;
+color: #4c4c4c;
+font-size:  12px;
+font-family: Arial,Helvetica,sans-serif;
+border: none;
+width: 370px;
+padding: 6px 4px;
+}
+*/
+
+.formA p{
+clear: both;
+margin: 2px 0;
+padding: 10px 0;
+}
+
+.formA .txtLim{
+position: absolute;
+display: block;
+color: #000;
+font-size: 11px;
+background: url(../lib/box_lim.gif) no-repeat;
+line-height: 23px;
+text-align: center;
+width: 137px;
+height: 25px;
+margin: 70px 0 0 335px;
+*margin: 70px 0 0 -140px;
+}
+
+.formA .txtLimIn{
+position: absolute;
+display: block;
+color: #000;
+font-size: 11px;
+line-height: 23px;
+text-align: center;
+width: 137px;
+height: 25px;
+margin: 70px 0 0 335px;
+*margin: 70px 0 0 -140px;
+}
+
+.loadI{
+float: left;
+display: block;
+background: url(../lib/loading.gif) no-repeat center;
+width: 40px;
+height: 40px;
+margin: 0 20px;
+}
+
+a.btnSend:link,a.btnSend:visited {
+display: block;
+float: left;
+outline: none;
+text-decoration: none;
+text-indent: -9000px;
+text-align: left;
+background: url(../lib/test2.png) no-repeat top;
+width: 89px;
+height: 36px;
+
+}
+
+a.btnSend:hover {
+background-position: bottom;
+}
+
+a.btnInsApp:link,a.btnInsApp:visited {
+float: left;
+display: block;
+outline: none;
+text-decoration: none;
+text-indent: -9000px;
+background: url(../lib/instalar.png) no-repeat top;
+width: 320px;
+height: 55px;
+*margin-top: 2px;
+margin-left: 102px;
+*margin-left: 50px;
+
+}
+
+a.btnInsApp:hover {
+background-position: bottom;
+}
